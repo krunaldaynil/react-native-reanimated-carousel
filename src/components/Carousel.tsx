@@ -125,7 +125,7 @@ const Carousel = React.forwardRef<ICarouselInstance, TCarouselProps<any>>(
 
     const scrollViewGestureOnScrollStart = React.useCallback(() => {
       onScrollStart?.();
-    }, [onScrollStart, pauseAutoPlay]);
+    }, [onScrollStart]);
 
     const scrollViewGestureOnScrollEnd = React.useCallback(() => {
       startAutoPlay();
