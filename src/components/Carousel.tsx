@@ -92,7 +92,7 @@ const Carousel = React.forwardRef<ICarouselInstance, TCarouselProps<any>>(
     const { next, prev, scrollTo, getSharedIndex, getCurrentIndex }
             = carouselController;
 
-    const { start: startAutoPlay, pause: pauseAutoPlay } = useAutoPlay({
+    const { start: startAutoPlay } = useAutoPlay({
       autoPlay,
       autoPlayInterval,
       autoPlayReverse,
@@ -124,7 +124,6 @@ const Carousel = React.forwardRef<ICarouselInstance, TCarouselProps<any>>(
     ]);
 
     const scrollViewGestureOnScrollStart = React.useCallback(() => {
-      pauseAutoPlay();
       onScrollStart?.();
     }, [onScrollStart, pauseAutoPlay]);
 
@@ -133,9 +132,7 @@ const Carousel = React.forwardRef<ICarouselInstance, TCarouselProps<any>>(
       _onScrollEnd();
     }, [_onScrollEnd, startAutoPlay]);
 
-    const scrollViewGestureOnTouchBegin = React.useCallback(pauseAutoPlay, [
-      pauseAutoPlay,
-    ]);
+    const scrollViewGestureOnTouchBegin = React.useCallback(()=>{}, []);
 
     const scrollViewGestureOnTouchEnd = React.useCallback(startAutoPlay, [
       startAutoPlay,
